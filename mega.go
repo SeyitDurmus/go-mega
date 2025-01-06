@@ -23,20 +23,19 @@ import (
 
 	"golang.org/x/crypto/pbkdf2"
 )
-
 // Default settings
 const (
-	API_URL              = "https://g.api.mega.co.nz"
-	BASE_DOWNLOAD_URL    = "https://mega.co.nz"
-	RETRIES              = 10
-	DOWNLOAD_WORKERS     = 3
-	MAX_DOWNLOAD_WORKERS = 30
-	UPLOAD_WORKERS       = 1
-	MAX_UPLOAD_WORKERS   = 30
-	TIMEOUT              = time.Second * 10
-	HTTPSONLY            = false
-	minSleepTime         = 10 * time.Millisecond // for retries
-	maxSleepTime         = 5 * time.Second       // for retries
+    API_URL              = "https://g.api.mega.co.nz"
+    BASE_DOWNLOAD_URL    = "https://mega.co.nz"
+    RETRIES              = 5                     // Reduced retries for faster failure detection
+    DOWNLOAD_WORKERS     = 3
+    MAX_DOWNLOAD_WORKERS = 30
+    UPLOAD_WORKERS       = 15                     // Increased from 1 to 8 concurrent uploads
+    MAX_UPLOAD_WORKERS   = 30
+    TIMEOUT              = time.Second * 5       // Reduced timeout
+    HTTPSONLY            = false
+    minSleepTime         = 5 * time.Millisecond  // Reduced min sleep time
+    maxSleepTime         = 2 * time.Second       // Reduced max sleep time
 )
 
 type config struct {
